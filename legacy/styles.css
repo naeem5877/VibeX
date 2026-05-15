@@ -1,0 +1,1316 @@
+/* VibeX - Instagram Enhanced Controls */
+
+/* Remove keyboard focus borders */
+*:focus,
+*:focus-visible,
+button:focus,
+button:focus-visible,
+input:focus,
+input:focus-visible,
+[tabindex]:focus,
+[tabindex]:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.ig-volume-control-container:focus,
+.ig-volume-control-container:focus-visible {
+  outline: none !important;
+}
+
+.ig-volume-control {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  z-index: 9999;
+  background: rgba(15, 15, 15, 0.6);
+  padding: 6px 12px;
+  border-radius: 24px;
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.95);
+  max-width: 90%;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.ig-volume-control.controls-hidden {
+  display: none !important;
+}
+
+article .ig-volume-control {
+  top: 12px;
+  left: 12px;
+}
+
+[role="dialog"] .ig-volume-control,
+main article .ig-volume-control {
+  top: 16px;
+  left: 16px;
+}
+
+/* Ensure controls are visible in dialogs */
+[role="dialog"] .ig-volume-control-container {
+  position: relative !important;
+}
+
+[role="dialog"] .ig-volume-control {
+  z-index: 99999 !important;
+}
+
+section[role="main"] .ig-volume-control {
+  top: 60px;
+  left: 12px;
+}
+
+@media (max-width: 1400px) {
+  .ig-volume-control {
+    padding: 7px 10px;
+    gap: 7px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ig-volume-control {
+    padding: 6px 9px;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 992px) {
+  .ig-volume-control {
+    padding: 6px 8px;
+    gap: 5px;
+  }
+}
+
+.ig-volume-control.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+.ig-volume-control:hover {
+  background: rgba(20, 20, 20, 0.75);
+  border-color: rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(0) scale(1.02);
+}
+
+.ig-volume-icon,
+.ig-settings-icon,
+.ig-download-icon {
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 10px;
+  position: relative;
+  flex-shrink: 0;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 1400px) {
+
+  .ig-volume-icon,
+  .ig-settings-icon,
+  .ig-download-icon {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+  }
+
+  .ig-volume-icon svg,
+  .ig-settings-icon svg,
+  .ig-download-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+
+  .ig-volume-icon,
+  .ig-settings-icon,
+  .ig-download-icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+  }
+
+  .ig-volume-icon svg,
+  .ig-settings-icon svg,
+  .ig-download-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .ig-volume-icon,
+  .ig-settings-icon,
+  .ig-download-icon {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+  }
+
+  .ig-volume-icon svg,
+  .ig-settings-icon svg,
+  .ig-download-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+.ig-volume-icon:hover,
+.ig-settings-icon:hover,
+.ig-download-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.ig-volume-icon:active,
+.ig-settings-icon:active,
+.ig-download-icon:active {
+  transform: scale(0.9);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.ig-download-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.ig-download-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.ig-download-icon:hover::before {
+  left: 100%;
+}
+
+.ig-download-icon:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.7),
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: scale(1.1) translateY(-2px);
+}
+
+.ig-download-icon:active {
+  transform: scale(0.95) translateY(0);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.ig-download-icon.downloading {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  animation: downloadPulse 1.5s ease-in-out infinite;
+  box-shadow: 0 4px 16px rgba(240, 147, 251, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.ig-download-icon.success {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  animation: successPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: 0 4px 16px rgba(56, 239, 125, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes downloadPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 4px 16px rgba(240, 147, 251, 0.6),
+      0 2px 6px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+  }
+
+  50% {
+    box-shadow: 0 6px 24px rgba(240, 147, 251, 0.9),
+      0 4px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes successPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.ig-settings-icon {
+  animation: rotate-gentle 8s ease-in-out infinite;
+}
+
+@keyframes rotate-gentle {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+}
+
+.ig-settings-icon:hover {
+  animation: none;
+}
+
+.ig-volume-icon svg,
+.ig-settings-icon svg,
+.ig-download-icon svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.ig-volume-slider-container {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 1;
+  min-width: 0;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.ig-volume-slider {
+  width: 100px !important;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 1;
+  min-width: 60px;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 1400px) {
+  .ig-volume-slider {
+    width: 80px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ig-volume-slider {
+    width: 70px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .ig-volume-slider {
+    width: 60px !important;
+    height: 5px;
+  }
+}
+
+.ig-volume-slider:hover {
+  height: 8px;
+}
+
+.ig-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+}
+
+.ig-volume-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.ig-volume-slider:active::-webkit-slider-thumb {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+
+.ig-volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ig-volume-slider:hover::-moz-range-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.ig-volume-slider:active::-moz-range-thumb {
+  transform: scale(1.1);
+  background: #f0f0f0;
+}
+
+.ig-volume-percent {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  min-width: 36px !important;
+  text-align: right;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  white-space: nowrap;
+}
+
+@media (max-width: 1400px) {
+  .ig-volume-percent {
+    font-size: 12px !important;
+    min-width: 34px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .ig-volume-percent {
+    font-size: 11px !important;
+    min-width: 32px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .ig-volume-percent {
+    font-size: 10px !important;
+    min-width: 30px !important;
+  }
+}
+
+.ig-advanced-controls {
+  position: absolute;
+  top: 60px;
+  left: 16px;
+  background: rgba(0, 0, 0, 0.92);
+  padding: 16px;
+  border-radius: 16px;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.6);
+  z-index: 9998;
+  min-width: 280px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ig-advanced-controls.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.ig-control-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ig-control-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.ig-control-label {
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ig-speed-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.ig-speed-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.ig-speed-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.ig-speed-btn.active {
+  background: linear-gradient(135deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(188, 24, 136, 0.4);
+}
+
+.ig-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+.ig-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ig-switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ig-switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ig-switch input:checked+.ig-switch-slider {
+  background: linear-gradient(135deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
+  border-color: transparent;
+}
+
+.ig-switch input:checked+.ig-switch-slider:before {
+  transform: translateX(24px);
+}
+
+.ig-skip-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ig-skip-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.ig-skip-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.ig-skip-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.ig-skip-btn:active {
+  transform: scale(0.95);
+}
+
+.ig-skip-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.ig-pip-btn,
+.ig-download-btn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.ig-pip-btn:disabled,
+.ig-download-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ig-pip-btn:hover:not(:disabled),
+.ig-download-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.ig-pip-btn:active:not(:disabled),
+.ig-download-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.ig-spinner {
+  animation: spinRotate 1.4s linear infinite;
+  display: inline-block;
+}
+
+.ig-spinner circle {
+  animation: spinDash 1.4s ease-in-out infinite;
+  stroke-dasharray: 80, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+}
+
+@keyframes spinRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinDash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: -15;
+  }
+
+  100% {
+    stroke-dasharray: 100, 200;
+    stroke-dashoffset: -125;
+  }
+}
+
+/* Completely hide Instagram's default mute/unmute buttons and their containers */
+.ig-volume-control-container button[aria-label*="mute" i],
+.ig-volume-control-container button[aria-label*="unmute" i],
+.ig-volume-control-container button[aria-label*="audio" i],
+.ig-volume-control-container button[aria-label*="sound" i],
+.ig-volume-control-container div[role="button"][aria-label*="mute" i],
+.ig-volume-control-container div[role="button"][aria-label*="unmute" i],
+.ig-volume-control-container div[role="button"][aria-label*="audio" i],
+.ig-volume-control-container div[role="button"][aria-label*="sound" i],
+.ig-volume-control-container svg[aria-label*="mute" i],
+.ig-volume-control-container svg[aria-label*="unmute" i],
+.ig-volume-control-container svg[aria-label*="audio" i] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Hide parent containers of mute buttons */
+.ig-volume-control-container button[aria-label*="mute" i]+*,
+.ig-volume-control-container button[aria-label*="unmute" i]+*,
+.ig-volume-control-container div[role="button"][aria-label*="mute" i]+*,
+.ig-volume-control-container div[role="button"][aria-label*="unmute" i]+* {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Hide any element that contains a mute button */
+.ig-volume-control-container *:has(> button[aria-label*="mute" i]),
+.ig-volume-control-container *:has(> button[aria-label*="unmute" i]),
+.ig-volume-control-container *:has(> button[aria-label*="audio" i]),
+.ig-volume-control-container *:has(> div[role="button"][aria-label*="mute" i]),
+.ig-volume-control-container *:has(> div[role="button"][aria-label*="unmute" i]) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+/* More aggressive hiding - target all levels of parent containers */
+.ig-volume-control-container *:has(button[aria-label*="mute" i]),
+.ig-volume-control-container *:has(button[aria-label*="unmute" i]),
+.ig-volume-control-container *:has(div[role="button"][aria-label*="mute" i]),
+.ig-volume-control-container *:has(div[role="button"][aria-label*="unmute" i]) {
+  background: transparent !important;
+}
+
+/* Hide mute buttons near videos */
+video+div button[aria-label*="mute" i],
+video+div button[aria-label*="unmute" i],
+video~div button[aria-label*="mute" i],
+video~div button[aria-label*="unmute" i] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* DO NOT hide parent divs - only hide the mute button itself to preserve captions */
+
+.ig-seekbar-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.ig-seekbar-container.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ig-seekbar-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  overflow: visible;
+}
+
+.ig-seekbar-track {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+}
+
+
+.ig-preview-tooltip {
+  position: absolute;
+  bottom: 18px;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(16px) saturate(200%);
+  -webkit-backdrop-filter: blur(16px) saturate(200%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 99999999;
+}
+
+.ig-preview-canvas {
+  width: 120px;
+  height: 214px;
+  border-radius: 8px;
+  display: block;
+  background: #000;
+  object-fit: cover;
+  transition: opacity 0.15s ease;
+}
+
+.ig-preview-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ig-preview-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: previewSpin 0.8s linear infinite;
+}
+
+@keyframes previewSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ig-preview-time {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  padding: 6px 0 2px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  border-radius: 0 0 6px 6px;
+  margin: 0 -4px -4px -4px;
+  letter-spacing: 0.5px;
+}
+
+.ig-seekbar-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+.ig-seekbar-buffered {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: width 0.3s ease;
+  pointer-events: none;
+}
+
+.ig-seekbar-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #f09433, #dc2743, #bc1888);
+  transition: width 0.1s linear;
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: 0 0 12px rgba(220, 39, 67, 0.4);
+}
+
+.ig-seekbar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.ig-seekbar::-webkit-slider-track {
+  background: transparent;
+  border: none;
+  height: 20px;
+}
+
+.ig-seekbar::-moz-range-track {
+  background: transparent;
+  border: none;
+  height: 20px;
+}
+
+.ig-seekbar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e6683c 0%, #dc2743 50%, #bc1888 100%);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(188, 24, 136, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.9);
+  border: 2px solid white;
+}
+
+.ig-seekbar::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e6683c 0%, #dc2743 50%, #bc1888 100%);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(188, 24, 136, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.9);
+}
+
+.ig-seekbar-container:hover .ig-seekbar::-webkit-slider-thumb,
+.ig-seekbar:hover::-webkit-slider-thumb,
+.ig-seekbar:active::-webkit-slider-thumb {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.ig-seekbar:active::-webkit-slider-thumb {
+  transform: scale(1.4);
+}
+
+.ig-seekbar-container:hover .ig-seekbar::-moz-range-thumb,
+.ig-seekbar:hover::-moz-range-thumb,
+.ig-seekbar:active::-moz-range-thumb {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.ig-seekbar:active::-moz-range-thumb {
+  transform: scale(1.4);
+}
+
+.ig-seekbar-container:hover .ig-seekbar-track,
+.ig-seekbar-container:hover .ig-seekbar-background,
+.ig-seekbar-container:hover .ig-seekbar-buffered,
+.ig-seekbar-container:hover .ig-seekbar-progress {
+  height: 5px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .ig-volume-control {
+    top: 10px;
+    left: 10px;
+    padding: 5px 8px;
+    gap: 4px;
+    border-radius: 20px;
+  }
+
+  article .ig-volume-control {
+    top: 8px;
+    left: 8px;
+  }
+
+  .ig-volume-icon,
+  .ig-settings-icon,
+  .ig-download-icon {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    border-radius: 8px;
+  }
+
+  .ig-volume-icon svg,
+  .ig-settings-icon svg,
+  .ig-download-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .ig-volume-slider {
+    width: 45px !important;
+    height: 3px;
+    min-width: 40px !important;
+  }
+
+  .ig-volume-percent {
+    font-size: 9px !important;
+    min-width: 26px !important;
+  }
+
+  .ig-time-display {
+    font-size: 10px;
+    padding: 3px 8px;
+    bottom: 6px;
+    right: 8px;
+  }
+
+  .ig-advanced-controls {
+    left: 8px;
+    right: 8px;
+    top: 56px;
+    min-width: unset;
+  }
+
+  .ig-speed-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ig-skip-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .ig-volume-control {
+    padding: 4px 6px;
+    gap: 3px;
+  }
+
+  .ig-volume-icon,
+  .ig-settings-icon,
+  .ig-download-icon {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+  }
+
+  .ig-volume-slider {
+    width: 35px !important;
+    min-width: 30px !important;
+  }
+
+  .ig-volume-percent {
+    font-size: 8px !important;
+    min-width: 24px !important;
+  }
+}
+
+/* Performance optimization */
+.ig-volume-control,
+.ig-seekbar-container,
+.ig-advanced-controls {
+  will-change: opacity, transform;
+}
+
+.ig-seekbar-progress,
+.ig-seekbar-buffered {
+  will-change: width;
+}
+
+/* Smooth animations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide Instagram's native navigation buttons */
+/* Only hide our custom navigation buttons, not Instagram's image carousel buttons */
+.ig-nav-button {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Only hide navigation in video containers with our controls */
+.ig-volume-control-container video~button[aria-label*="Next" i],
+.ig-volume-control-container video~button[aria-label*="Previous" i] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Additional aggressive hiding for Instagram's audio control button in all contexts */
+[role="dialog"] button[aria-label*="mute" i],
+[role="dialog"] button[aria-label*="unmute" i],
+[role="dialog"] button[aria-label*="audio" i],
+[role="dialog"] div[role="button"][aria-label*="mute" i],
+[role="dialog"] div[role="button"][aria-label*="unmute" i],
+[role="dialog"] div[role="button"][aria-label*="audio" i],
+article button[aria-label*="mute" i],
+article button[aria-label*="unmute" i],
+article button[aria-label*="audio" i],
+article div[role="button"][aria-label*="mute" i],
+article div[role="button"][aria-label*="unmute" i],
+article div[role="button"][aria-label*="audio" i] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  position: absolute !important;
+  overflow: hidden !important;
+}
+
+/* Hide parent containers in dialogs and articles */
+[role="dialog"] *:has(> button[aria-label*="mute" i]),
+[role="dialog"] *:has(> button[aria-label*="unmute" i]),
+[role="dialog"] *:has(> div[role="button"][aria-label*="mute" i]),
+[role="dialog"] *:has(> div[role="button"][aria-label*="unmute" i]),
+article *:has(> button[aria-label*="mute" i]),
+article *:has(> button[aria-label*="unmute" i]),
+article *:has(> div[role="button"][aria-label*="mute" i]),
+article *:has(> div[role="button"][aria-label*="unmute" i]) {
+  background: transparent !important;
+}
+
+/* Target specific Instagram button containers by common patterns */
+[role="dialog"] div[style*="position: absolute"]:has(button[aria-label*="mute" i]),
+[role="dialog"] div[style*="position: absolute"]:has(button[aria-label*="unmute" i]),
+article div[style*="position: absolute"]:has(button[aria-label*="mute" i]),
+article div[style*="position: absolute"]:has(button[aria-label*="unmute" i]) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Ultra-aggressive hiding for reels and dialog mute buttons */
+[role="dialog"] button[aria-label*="mute" i]:not(.ig-volume-control *),
+[role="dialog"] button[aria-label*="unmute" i]:not(.ig-volume-control *),
+[role="dialog"] button[aria-label*="audio" i]:not(.ig-volume-control *),
+[role="dialog"] div[role="button"][aria-label*="mute" i]:not(.ig-volume-control *),
+[role="dialog"] div[role="button"][aria-label*="unmute" i]:not(.ig-volume-control *),
+[role="dialog"] div[role="button"][aria-label*="audio" i]:not(.ig-volume-control *),
+article button[aria-label*="mute" i]:not(.ig-volume-control *),
+article button[aria-label*="unmute" i]:not(.ig-volume-control *),
+article button[aria-label*="audio" i]:not(.ig-volume-control *),
+article div[role="button"][aria-label*="mute" i]:not(.ig-volume-control *),
+article div[role="button"][aria-label*="unmute" i]:not(.ig-volume-control *),
+article div[role="button"][aria-label*="audio" i]:not(.ig-volume-control *) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  position: absolute !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+
+/* DO NOT hide parent divs in dialogs/articles - captions need to stay visible */
+
+/* Hide grandparent containers too */
+[role="dialog"] div:has(div > button[aria-label*="mute" i]):not(.ig-volume-control):not(.ig-volume-control-container),
+[role="dialog"] div:has(div > button[aria-label*="unmute" i]):not(.ig-volume-control):not(.ig-volume-control-container),
+article div:has(div > button[aria-label*="mute" i]):not(.ig-volume-control):not(.ig-volume-control-container),
+article div:has(div > button[aria-label*="unmute" i]):not(.ig-volume-control):not(.ig-volume-control-container) {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Remove pointer cursor from videos - let our controls handle it */
+.ig-volume-control-container video {
+  cursor: default !important;
+  pointer-events: auto !important;
+}
+
+/* Force default cursor on all videos */
+video {
+  cursor: default !important;
+}
+
+/* Override Instagram's pointer cursor on videos */
+article video,
+main video,
+section video,
+div video {
+  cursor: default !important;
+}
+
+/* Specifically target videos in articles and main sections */
+article[role] video,
+main[role] video,
+section[role="main"] video {
+  cursor: default !important;
+}
+
+/* Reels page - ONLY hide mute button, nothing else */
+button[aria-label*="mute" i]:not(.ig-volume-control *):not(.ig-advanced-controls *),
+button[aria-label*="unmute" i]:not(.ig-volume-control *):not(.ig-advanced-controls *),
+button[aria-label*="audio" i]:not(.ig-volume-control *):not(.ig-advanced-controls *),
+div[role="button"][aria-label*="mute" i]:not(.ig-volume-control *):not(.ig-advanced-controls *),
+div[role="button"][aria-label*="unmute" i]:not(.ig-volume-control *):not(.ig-advanced-controls *),
+div[role="button"][aria-label*="audio" i]:not(.ig-volume-control *):not(.ig-advanced-controls *) {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0) !important;
+  z-index: -1 !important;
+}
+
+/* DO NOT hide parent divs on reels page - captions must stay visible */
+
+/* Target any button with cursor pointer near videos */
+.ig-volume-control-container button:not(.ig-volume-control *):not(.ig-advanced-controls *) {
+  cursor: default !important;
+}
+
+/* Don't hide elements based on cursor style - too aggressive */
+
+/* 2x Speed Overlay */
+.ig-speed-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  pointer-events: none;
+  z-index: 10001;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.ig-speed-overlay.visible {
+  opacity: 1;
+}
+
+/* Song Recognition Icon - Shazam Style */
+.ig-song-icon {
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 10px;
+  position: relative;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #ff6b00 0%, #ff0084 100%);
+  box-shadow: 0 4px 12px rgba(255, 0, 132, 0.4);
+}
+
+.ig-song-icon:hover {
+  background: linear-gradient(135deg, #ff0084 0%, #ff6b00 100%);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(255, 0, 132, 0.6);
+}
+
+.ig-song-icon:active {
+  transform: scale(0.95) rotate(0deg);
+}

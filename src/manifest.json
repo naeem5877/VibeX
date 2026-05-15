@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "VibeX - Instagram Enhanced Controls",
+  "version": "3.1.1",
+  "description": "Advanced volume control, video playback features, song recognition, and download capability for Instagram",
+  "permissions": ["storage", "tabs"],
+  "host_permissions": [
+    "https://www.instagram.com/*",
+    "https://stingy-rachele-naeem-5b43a3bb.koyeb.app/*",
+    "https://shazam-vibex-api.onrender.com/*"
+  ],
+  "icons": {
+    "16": "icon/icon-16.png",
+    "32": "icon/icon-32.png",
+    "48": "icon/icon-48.png",
+    "128": "icon/icon-128.png"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "icon/icon16.png",
+      "48": "icon/icon48.png",
+      "128": "icon/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["src/content/index.js"],
+      "css": ["src/content/styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["src/pages/welcome.html", "src/pages/update.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
