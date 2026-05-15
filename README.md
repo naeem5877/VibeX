@@ -19,7 +19,7 @@
     <a href="https://github.com/naeem5877/VibeX">
       <img src="https://img.shields.io/badge/Extension-GitHub-181717?style=for-the-badge&logo=github" alt="GitHub" />
     </a>
-    <a href="https://vibedownloader.me">
+    <a href="https://vibedownloader.vercel.app">
       <img src="https://img.shields.io/badge/Visit-Website-blue?style=for-the-badge&logo=google-chrome" alt="Visit Website" />
     </a>
   </p>
