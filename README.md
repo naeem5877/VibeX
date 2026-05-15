@@ -92,18 +92,35 @@ Transparency you can trust. No hidden tracking, no data mining.
   <img src="https://github.com/user-attachments/assets/7d7b50c8-982c-4c70-82b2-dc0ec49f980c" width="90%" alt="VibeX Demo" />
 </div>
 
----
-
 ## 📥 Installation
 
-### 🔧 Manual Installation (Developer Mode)
+### 🚀 Official Stores
+
+Get VibeX directly from your browser's official store for automatic updates:
+
+<p>
+  <a href="https://microsoftedge.microsoft.com/addons/detail/vibex-instagram-enhance/epbadfedljegkclgdelfngicbnnoikho">
+    <img src="https://img.shields.io/badge/Edge-Add--ons-0078d7?style=for-the-badge&logo=microsoft-edge&logoColor=white" alt="Get VibeX for Edge" />
+  </a>
+  <a href="https://addons.mozilla.org/en-US/firefox/addon/vibex-instagram/">
+    <img src="https://img.shields.io/badge/Firefox-Add--ons-ff7139?style=for-the-badge&logo=firefox-browser&logoColor=white" alt="Get VibeX for Firefox" />
+  </a>
+</p>
+
+---
+
+### 🔧 Manual Installation (Chrome, Brave, etc.)
+
+For browsers like **Google Chrome**, **Brave**, or other Chromium-based browsers, use the manual method:
 
 1. Download the latest source code from the [**Releases**](https://github.com/naeem5877/VibeX/releases) page.
-2. Unzip the file.
-3. Open your browser and go to `chrome://extensions/` (or `edge://extensions/`).
-4. Enable **Developer Mode** (top-right corner).
-5. Click **Load unpacked** and select the `dist` folder from the unzipped directory.
-6. Refresh Instagram and start vibing!
+2. Unzip the file to a folder on your computer.
+3. Open your browser and go to the extensions page:
+   - **Chrome**: `chrome://extensions/`
+   - **Brave**: `brave://extensions/`
+4. Enable **Developer Mode** (usually a toggle in the top-right).
+5. Click **Load unpacked** and select the `dist` folder from your unzipped directory.
+6. Refresh Instagram and enjoy the VibeX experience!
 
 ---
 
