@@ -93,9 +93,21 @@ const UpdatePage: React.FC = () => {
                 <div className="timeline">
                     <UpdateItem
                         index={0}
+                        version="3.2.0"
+                        date="May 15, 2026"
+                        isLatest
+                        changes={[
+                            { type: 'feature', text: 'Dynamic Home Feed: New vertical control layout specifically optimized for the Instagram home page.' },
+                            { type: 'feature', text: 'Shazam Integration: Identify any song playing in a video with the new built-in recognition engine.' },
+                            { type: 'refinement', text: 'Enhanced Download UX: Added live status labels (Fetching, Downloading) and a sticky progress state that keeps the bar open.' },
+                            { type: 'refinement', text: 'Auto-Close Logic: The control bar now automatically hides only after a successful download.' },
+                            { type: 'fix', text: 'Fixed layout glitches, improved icon centering, and refined vertical slider behavior for a smoother experience.' },
+                        ]}
+                    />
+                    <UpdateItem
+                        index={1}
                         version="3.1.1"
                         date="February 25, 2026"
-                        isLatest
                         changes={[
                             { type: 'fix', text: 'Fixed Instagram native mute button conflict: VibeX volume control now works seamlessly without interference from Instagram\'s own mute toggle.' },
                             { type: 'fix', text: 'Minor bug fixes and stability improvements.' },
