@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/naeem5877/VibeX">
-    <img src="public/icon128.png" alt="VibeX Logo" width="120" height="auto" />
+    <img src="logo.png" alt="VibeX Logo" width="120" height="auto" />
   </a>
   <br />
   <br />
