@@ -1191,8 +1191,11 @@
 }
 
 /* ==================== HIDE NATIVE CONTROLS ==================== */
-.x14vqqas,
-.xdg88n9 {
+button[aria-label="Toggle audio"],
+div[aria-label="Video player"] .x14vqqas,
+div[aria-label="Video player"] .xdg88n9,
+div[data-instancekey] .x14vqqas,
+div[data-instancekey] .xdg88n9 {
     display: none !important;
 }
 
@@ -1332,4 +1335,108 @@
     .vibex-song-links {
         grid-template-columns: 1fr;
     }
+}
+
+/* ==================== UPDATE POPUP ==================== */
+.vibex-update-popup-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2147483647 !important;
+    background: rgba(12, 12, 14, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 24px;
+    width: 320px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    pointer-events: auto !important;
+    will-change: transform, opacity;
+}
+
+.vibex-update-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent !important;
+    border: none !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vibex-update-close:hover {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.vibex-update-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.vibex-update-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    letter-spacing: 0.5px;
+    color: white;
+}
+
+.vibex-update-desc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 16px 0;
+}
+
+.vibex-update-browsers {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.vibex-update-browsers p {
+    margin: 0 0 8px 0;
+}
+
+.vibex-update-browsers p:last-child {
+    margin: 0;
+}
+
+.vibex-update-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #8b5cf6 !important;
+    color: white !important;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s;
+    border: none;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.vibex-update-btn:hover {
+    background: #7c3aed !important;
+    transform: scale(1.02);
+}
+
+.vibex-update-btn:active {
+    transform: scale(0.98);
 }

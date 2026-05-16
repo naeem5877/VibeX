@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "VibeX - Instagram Enhanced Controls",
-  "version": "3.1.1",
+  "version": "3.3.0",
   "description": "Advanced volume control, video playback features, song recognition, and download capability for Instagram",
   "permissions": ["storage", "tabs"],
   "host_permissions": [

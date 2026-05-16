@@ -2242,3 +2242,80 @@ function isElementInViewport(el: HTMLElement): boolean {
 
 // Initialize handlers
 attachGlobalKeyboardHandlers();
+
+// ==================== UPDATE CHECKER ====================
+
+const UpdatePopup: React.FC<{
+    version: string;
+    onClose: () => void;
+}> = ({ version, onClose }) => {
+    return (
+        <AnimatePresence>
+            <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 50, scale: 0.9 }}
+                className="vibex-update-popup-container"
+            >
+                <div className="vibex-update-popup-content">
+                    <button onClick={onClose} className="vibex-update-close">
+                        <X size={18} />
+                    </button>
+                    <div className="vibex-update-icon">🚀</div>
+                    <h3 className="vibex-update-title">VibeX Update Available</h3>
+                    <p className="vibex-update-desc">
+                        Version <strong>{version}</strong> has launched!
+                    </p>
+                    <div className="vibex-update-browsers">
+                        <p><strong>Chrome / Brave:</strong> You are on an older version. Please manually check or reinstall to update.</p>
+                        <p><strong>Edge / Firefox:</strong> Ignore this message, the update will be added soon. You will receive it automatically.</p>
+                    </div>
+                    <a href="https://github.com/naeem5877/VibeX/releases/latest" target="_blank" className="vibex-update-btn">
+                        View Release Notes
+                    </a>
+                </div>
+            </motion.div>
+        </AnimatePresence>
+    );
+};
+
+function compareVersions(v1: string, v2: string) {
+    const parts1 = v1.split('.').map(Number);
+    const parts2 = v2.split('.').map(Number);
+    for (let i = 0; i < Math.max(parts1.length, parts2.length); i++) {
+        const p1 = parts1[i] || 0;
+        const p2 = parts2[i] || 0;
+        if (p1 > p2) return 1;
+        if (p1 < p2) return -1;
+    }
+    return 0;
+}
+
+async function checkForUpdates() {
+    try {
+        const res = await fetch('https://api.github.com/repos/naeem5877/VibeX/releases/latest');
+        if (!res.ok) return;
+        const data = await res.json();
+        const latestVersion = data.tag_name ? data.tag_name.replace('v', '') : null;
+        if (!latestVersion) return;
+        
+        const currentVersion = chrome.runtime.getManifest().version;
+        if (latestVersion !== currentVersion && compareVersions(latestVersion, currentVersion) > 0) {
+            const root = getGlobalOverlayRoot();
+            const wrapper = document.createElement('div');
+            root.appendChild(wrapper);
+            const reactRoot = createRoot(wrapper);
+            
+            const closePopup = () => {
+                reactRoot.unmount();
+                wrapper.remove();
+            };
+            
+            reactRoot.render(<UpdatePopup version={latestVersion} onClose={closePopup} />);
+        }
+    } catch (e) {
+        console.error("VibeX: Update check failed", e);
+    }
+}
+
+setTimeout(checkForUpdates, 3000);

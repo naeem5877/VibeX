@@ -95,9 +95,9 @@ const InfinitePopup: React.FC = () => {
                         className="flex items-center gap-2 mb-1"
                     >
                         <Zap size={18} className="text-purple-500 fill-purple-500 animate-vibe-pulse" />
-                        <h1 className="text-2xl font-black italic tracking-tighter text-white uppercase">VibeX 3.2.0</h1>
+                        <h1 className="text-2xl font-black italic tracking-tighter text-white uppercase">VibeX 3.3.0</h1>
                     </motion.div>
-                    <span className="text-[10px] font-bold tracking-[0.4em] text-white/30 uppercase">Neural Stream v3.2.0</span>
+                    <span className="text-[10px] font-bold tracking-[0.4em] text-white/30 uppercase">Neural Stream v3.3.0</span>
                 </header>
 
                 {/* Vertical Integrated Controls */}
@@ -224,7 +224,7 @@ const InfinitePopup: React.FC = () => {
                     <Radio size={10} className="animate-pulse" />
                     <span className="text-[8px] font-black uppercase tracking-[0.2em]">Neural Link Stable</span>
                 </div>
-                <span className="text-[8px] font-black tracking-[0.2em]">OS v3.2.0</span>
+                <span className="text-[8px] font-black tracking-[0.2em]">OS v3.3.0</span>
             </footer>
         </div>
     );
